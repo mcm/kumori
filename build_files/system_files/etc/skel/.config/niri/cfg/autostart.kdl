@@ -1,0 +1,18 @@
+// ────────────── Startup Applications ──────────────
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
+
+    // ublue-niri additions for Fedora/bootc (not in upstream CachyOS config):
+    // Export session env into systemd --user + D-Bus so portals, the keyring,
+    // and user services know we're in a niri Wayland session.
+    spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
+
+    // X11 app support (niri is pure Wayland). Provides DISPLAY=:0 — see misc.kdl.
+    spawn-at-startup "xwayland-satellite"
+
+    // PolicyKit auth agent. We use polkit-gnome (ships on the image, works
+    // offline) instead of noctalia's network-fetched polkit-agent plugin, which
+    // is disabled in noctalia/plugins.json to avoid two agents fighting.
+    spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
+
+    // The noctalia shell (bar, launcher, notifications, OSD, wallpaper, lock).
+    spawn-sh-at-startup "qs -c noctalia-shell"

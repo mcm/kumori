@@ -3,12 +3,19 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Image
-FROM ghcr.io/ublue-os/bazzite:stable
+#
+# bluefin-dx = Bluefin "Developer Experience" edition: the developer-targeted
+# Bluefin variant (container tooling, virtualization, devcontainers, etc.).
+# We layer the niri compositor + noctalia shell on top of it. GNOME stays
+# installed and selectable in GDM; niri is added as an additional session and
+# is the intended default.
+FROM ghcr.io/ublue-os/bluefin-dx:stable
 
 ## Other possible base images include:
-# FROM ghcr.io/ublue-os/bazzite:latest
-# FROM ghcr.io/ublue-os/bluefin-nvidia:stable
-# 
+# FROM ghcr.io/ublue-os/bluefin:stable            # Bluefin without the dx dev tooling
+# FROM ghcr.io/ublue-os/bluefin-dx-nvidia:stable  # dx + NVIDIA proprietary drivers
+# FROM ghcr.io/ublue-os/bazzite:stable
+#
 # ... and so on, here are more base images
 # Universal Blue Images: https://github.com/orgs/ublue-os/packages
 # Fedora base image: quay.io/fedora/fedora-bootc:41
