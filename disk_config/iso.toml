@@ -1,0 +1,28 @@
+# Anaconda installer ISO config for ublue-niri.
+#
+# Based on the template's iso-kde.toml: it keeps the full interactive installer
+# INCLUDING the Users module, so the installer prompts you to create a user
+# account. That matters here because the niri/noctalia configs live in
+# /etc/skel and are only copied into freshly-created home directories.
+
+[customizations.installer.kickstart]
+contents = """
+%post
+bootc switch --mutate-in-place --transport registry ghcr.io/mcm/ublue-niri:latest
+%end
+"""
+
+[customizations.installer.modules]
+enable = [
+  "org.fedoraproject.Anaconda.Modules.Storage",
+  "org.fedoraproject.Anaconda.Modules.Runtime",
+  "org.fedoraproject.Anaconda.Modules.Network",
+  "org.fedoraproject.Anaconda.Modules.Security",
+  "org.fedoraproject.Anaconda.Modules.Services",
+  "org.fedoraproject.Anaconda.Modules.Users",
+  "org.fedoraproject.Anaconda.Modules.Timezone"
+]
+
+disable = [
+  "org.fedoraproject.Anaconda.Modules.Subscription",
+]
