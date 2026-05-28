@@ -80,13 +80,18 @@ cp -r /ctx/system_files/* /
 # /ctx/optional/cachyos-kernel.sh
 
 #############################################
-## 6. Clean up: disable third-party repos so they don't leak downstream
+## 6. Clean up: REMOVE third-party repo definitions
 #############################################
-dnf5 -y copr disable yalter/niri
-# Disable Terra repos (noctalia updates arrive via new image builds, not the
-# user's local dnf). Leave terra-release installed so the repo definition exists
-# but is inert.
-dnf5 -y config-manager setopt "terra*.enabled=0" || true
+# We delete the repo files outright (not just disable them). The niri/noctalia
+# packages are already baked into the image layer, so nothing is lost — but a
+# leftover repo definition with a dangling gpgkey reference breaks downstream
+# tooling. In particular, bootc-image-builder's Anaconda depsolve reads every
+# repo file in the image and fails on the Terra repo's missing GPG key.
+# (noctalia/niri updates arrive via new image builds, not the user's local dnf.)
+dnf5 -y copr remove yalter/niri || true
+rm -f /etc/yum.repos.d/_copr*niri*.repo \
+      /etc/yum.repos.d/*yalter*niri*.repo \
+      /etc/yum.repos.d/terra*.repo
 
 #############################################
 ## 7. Services
