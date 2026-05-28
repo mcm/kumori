@@ -11,11 +11,11 @@ Modifications were made for Fedora / Universal Blue / bootc compatibility,
 including:
 
 - `niri/cfg/autostart.kdl` — added D-Bus session env import, `xwayland-satellite`,
-  and a `polkit-gnome` auth agent.
+  and a `mate-polkit` auth agent.
 - `niri/cfg/misc.kdl` — added `DISPLAY` for Xwayland; cursor theme changed from
   `capitaine-cursors` (not packaged on Fedora) to `Adwaita`.
 - `noctalia/plugins.json` — disabled the network-fetched `polkit-agent` plugin
-  in favor of `polkit-gnome`.
+  in favor of `mate-polkit`.
 - `gtk-3.0` / `gtk-4.0` `settings.ini` — theme changed from `adw-gtk3` to
   `Nordic` (Nord aesthetic).
 

@@ -35,7 +35,9 @@ dnf5 install -y --nogpgcheck \
 # Note: the CachyOS niri config binds the terminal to alacritty and routes
 # media/brightness/volume keys through noctalia's IPC (not standalone tools),
 # and noctalia manages the wallpaper itself — so we don't need fuzzel/swaybg.
-# polkit-gnome is our offline PolicyKit agent (noctalia's plugin is disabled).
+# mate-polkit is our offline PolicyKit agent (noctalia's plugin is disabled).
+# Note: Fedora has no standalone "polkit-gnome" anymore (folded into gnome-shell,
+# which doesn't run under niri), so we use the lightweight MATE agent instead.
 dnf5 install -y \
     niri \
     noctalia-shell \
@@ -47,7 +49,7 @@ dnf5 install -y \
     wlr-randr \
     wlsunset \
     playerctl \
-    polkit-gnome \
+    mate-polkit \
     ImageMagick
 
 #############################################
