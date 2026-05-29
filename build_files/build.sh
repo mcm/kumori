@@ -140,6 +140,14 @@ sed -i "s|^IMAGE_ID=.*|IMAGE_ID=\"${IMAGE_NAME}\"|"                 /usr/lib/os-
 rm -f /usr/share/wayland-sessions/gnome*.desktop \
       /usr/share/xsessions/gnome*.desktop
 
+# Skip GNOME's first-login onboarding. gnome-initial-setup runs as a separate
+# greeter session (/usr/share/gdm/greeter/wayland-sessions/gnome-initial-setup
+# .desktop) on a new account's first login, presenting a full GNOME session
+# *before* niri ever starts. The /etc/skel done-stamp (system_files) makes new
+# users skip it; masking the user unit is a belt-and-suspenders guarantee for
+# accounts created outside skel.
+systemctl --global mask gnome-initial-setup-first-login.service || true
+
 #############################################
 ## 8. (OPTIONAL) CachyOS kernel
 #############################################
