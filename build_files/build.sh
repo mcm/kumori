@@ -50,7 +50,9 @@ dnf5 install -y \
     playerctl \
     mate-polkit \
     adw-gtk3-theme \
-    ImageMagick
+    ImageMagick \
+    sddm \
+    sddm-wayland-generic
 
 #############################################
 ## 3. Brand fonts (Precision Overcast)
@@ -132,20 +134,24 @@ sed -i "s|^DEFAULT_HOSTNAME=.*|DEFAULT_HOSTNAME=\"umizaru\"|"       /usr/lib/os-
 sed -i "s|^IMAGE_ID=.*|IMAGE_ID=\"${IMAGE_NAME}\"|"                 /usr/lib/os-release
 
 #############################################
-## 7. niri is the only GDM session
+## 7. Display manager: SDDM (replacing GDM), niri the only session
 #############################################
-# Hide GNOME's session entries so only niri is offered at login (and is thus the
-# default). GNOME packages stay installed and are recoverable; we only remove the
-# session launchers. A TTY (Ctrl-Alt-F3) remains available if niri ever fails.
+# GDM has no bakeable system-wide default session (it's AccountsService-only,
+# per-user), so on a niri-only image it falls back to its greeter's gnome-session.
+# SDDM is DE-agnostic, reads /usr/share/wayland-sessions, and with only niri.desktop
+# present simply defaults to niri. Its Wayland greeter runs via weston (provided
+# by sddm-wayland-generic), so no Xorg is needed.
+systemctl disable gdm.service || true
+systemctl enable sddm.service
+# Make SDDM the canonical display-manager (the alias symlink still points at gdm).
+ln -sf /usr/lib/systemd/system/sddm.service /etc/systemd/system/display-manager.service
+
+# Leave only niri as a selectable session (SDDM lists /usr/share/wayland-sessions).
 rm -f /usr/share/wayland-sessions/gnome*.desktop \
       /usr/share/xsessions/gnome*.desktop
 
-# Skip GNOME's first-login onboarding. gnome-initial-setup runs as a separate
-# greeter session (/usr/share/gdm/greeter/wayland-sessions/gnome-initial-setup
-# .desktop) on a new account's first login, presenting a full GNOME session
-# *before* niri ever starts. The /etc/skel done-stamp (system_files) makes new
-# users skip it; masking the user unit is a belt-and-suspenders guarantee for
-# accounts created outside skel.
+# Skip GNOME's first-login onboarding (harmless under SDDM, but keep it off):
+# the /etc/skel done-stamp (system_files) makes new users skip gnome-initial-setup.
 systemctl --global mask gnome-initial-setup-first-login.service || true
 
 #############################################

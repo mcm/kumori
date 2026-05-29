@@ -6,8 +6,9 @@
     // and user services know we're in a niri Wayland session.
     spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 
-    // X11 app support (niri is pure Wayland). Provides DISPLAY=:0 — see misc.kdl.
-    spawn-at-startup "xwayland-satellite"
+    // X11 app support: niri 26.04 manages xwayland-satellite natively (see the
+    // xwayland-satellite block in misc.kdl). Do NOT spawn it here — a manual
+    // instance grabs DISPLAY :0 and makes niri disable its own integration.
 
     // PolicyKit auth agent. We use the MATE agent (ships on the image, works
     // offline) instead of noctalia's network-fetched polkit-agent plugin, which

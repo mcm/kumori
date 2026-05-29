@@ -8,8 +8,14 @@
         QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
         XDG_CURRENT_DESKTOP "niri"
         XDG_SESSION_TYPE "wayland"
-        // umizaru: display for xwayland-satellite (spawned in autostart.kdl).
-        DISPLAY ":0"
+        // DISPLAY is intentionally NOT set here — niri assigns it for its
+        // natively-managed xwayland-satellite (see the block below).
+    }
+
+    // X11 support: niri 26.04 spawns and manages xwayland-satellite itself
+    // (on-demand, picks a free display, exports DISPLAY to spawned apps).
+    xwayland-satellite {
+        path "/usr/bin/xwayland-satellite"
     }
 
     cursor {
