@@ -1,7 +1,7 @@
 // ────────────── Startup Applications ──────────────
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
 
-    // ublue-niri additions for Fedora/bootc (not in upstream CachyOS config):
+    // umizaru additions for Fedora/bootc (not in upstream CachyOS config):
     // Export session env into systemd --user + D-Bus so portals, the keyring,
     // and user services know we're in a niri Wayland session.
     spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"

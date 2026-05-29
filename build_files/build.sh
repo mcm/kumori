@@ -89,7 +89,7 @@ sed -i 's|^SHELL=.*|SHELL=/usr/bin/zsh|' /etc/default/useradd
 # Conservative path: we change the display name (NAME/PRETTY_NAME/VARIANT_ID/...)
 # but deliberately leave ID/ID_LIKE alone, since Bluefin's tooling (ujust, etc.)
 # may key off ID=bluefin and changing it also requires a GRUB EFIDIR fix.
-IMAGE_NAME="ublue-niri"            # must match the OCI image name (ghcr.io/mcm/ublue-niri)
+IMAGE_NAME="umizaru"            # must match the OCI image name (ghcr.io/mcm/umizaru)
 IMAGE_PRETTY_NAME="Umizaru"        # the user-facing OS name
 IMAGE_VENDOR="mcm"
 CODE_NAME="overcast"
@@ -115,10 +115,10 @@ sed -i "s|^NAME=.*|NAME=\"${IMAGE_PRETTY_NAME}\"|"                  /usr/lib/os-
 sed -i "s|^PRETTY_NAME=.*|PRETTY_NAME=\"${IMAGE_PRETTY_NAME}\"|"    /usr/lib/os-release
 sed -i "s|^VARIANT_ID=.*|VARIANT_ID=${IMAGE_NAME}|"                 /usr/lib/os-release
 sed -i "s|^VERSION_CODENAME=.*|VERSION_CODENAME=\"${CODE_NAME}\"|"  /usr/lib/os-release
-sed -i "s|^HOME_URL=.*|HOME_URL=\"https://github.com/mcm/ublue-niri\"|"           /usr/lib/os-release
-sed -i "s|^DOCUMENTATION_URL=.*|DOCUMENTATION_URL=\"https://github.com/mcm/ublue-niri\"|" /usr/lib/os-release
-sed -i "s|^SUPPORT_URL=.*|SUPPORT_URL=\"https://github.com/mcm/ublue-niri/issues/\"|"      /usr/lib/os-release
-sed -i "s|^BUG_REPORT_URL=.*|BUG_REPORT_URL=\"https://github.com/mcm/ublue-niri/issues/\"|" /usr/lib/os-release
+sed -i "s|^HOME_URL=.*|HOME_URL=\"https://github.com/mcm/umizaru\"|"           /usr/lib/os-release
+sed -i "s|^DOCUMENTATION_URL=.*|DOCUMENTATION_URL=\"https://github.com/mcm/umizaru\"|" /usr/lib/os-release
+sed -i "s|^SUPPORT_URL=.*|SUPPORT_URL=\"https://github.com/mcm/umizaru/issues/\"|"      /usr/lib/os-release
+sed -i "s|^BUG_REPORT_URL=.*|BUG_REPORT_URL=\"https://github.com/mcm/umizaru/issues/\"|" /usr/lib/os-release
 sed -i "s|^DEFAULT_HOSTNAME=.*|DEFAULT_HOSTNAME=\"umizaru\"|"       /usr/lib/os-release
 sed -i "s|^IMAGE_ID=.*|IMAGE_ID=\"${IMAGE_NAME}\"|"                 /usr/lib/os-release
 

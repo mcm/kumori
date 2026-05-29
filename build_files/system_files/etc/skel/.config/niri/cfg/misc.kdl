@@ -8,7 +8,7 @@
         QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
         XDG_CURRENT_DESKTOP "niri"
         XDG_SESSION_TYPE "wayland"
-        // ublue-niri: display for xwayland-satellite (spawned in autostart.kdl).
+        // umizaru: display for xwayland-satellite (spawned in autostart.kdl).
         DISPLAY ":0"
     }
 
