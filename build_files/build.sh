@@ -75,6 +75,17 @@ fc-cache -f "$FONTDIR"
 # system_files/ mirrors the final filesystem layout (etc/, usr/, ...).
 cp -r /ctx/system_files/* /
 
+# Make our wallpaper noctalia's built-in default. noctalia's WallpaperService
+# falls back to `noctaliaDefaultWallpaper` whenever a monitor has no wallpaper
+# configured, so repointing it applies our wallpaper for every fresh user with
+# no IPC/startup race. The sed matches the property name (robust to value drift).
+for wps in /etc/xdg/quickshell/noctalia-shell/Services/UI/WallpaperService.qml \
+           /usr/share/quickshell/noctalia-shell/Services/UI/WallpaperService.qml; do
+    [ -f "$wps" ] && sed -i \
+        's|\(readonly property string noctaliaDefaultWallpaper:\).*|\1 "/usr/share/backgrounds/kumori/kumori.jpg"|' \
+        "$wps"
+done
+
 # Compile the dconf system defaults we just dropped in (Precision Overcast
 # appearance: force dark so the libadwaita gtk.css recolor renders correctly).
 # Ensure the default profile references the "local" db without clobbering a

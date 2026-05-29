@@ -17,9 +17,6 @@
     spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
 
     // The noctalia shell (bar, launcher, notifications, OSD, wallpaper, lock).
+    // The default wallpaper is set at build time by repointing noctalia's
+    // `noctaliaDefaultWallpaper` (see build.sh) — no startup IPC needed.
     spawn-sh-at-startup "qs -c noctalia-shell"
-
-    // Apply the default wallpaper once noctalia's IPC is up. noctalia only scans
-    // wallpaper.directory; the active wallpaper must be set explicitly. Try the
-    // `noctalia` CLI, falling back to the quickshell IPC call.
-    spawn-sh-at-startup "sleep 4; noctalia msg wallpaper-set /usr/share/backgrounds/kumori/kumori.jpg 2>/dev/null || qs -c noctalia-shell ipc call wallpaper set /usr/share/backgrounds/kumori/kumori.jpg"
