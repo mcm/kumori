@@ -50,6 +50,7 @@ dnf5 install -y \
     playerctl \
     mate-polkit \
     adw-gtk3-theme \
+    adwaita-cursor-theme \
     ImageMagick \
     sddm \
     sddm-wayland-generic
