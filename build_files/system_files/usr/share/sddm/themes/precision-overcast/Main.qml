@@ -139,6 +139,8 @@ Rectangle {
                 color: root.cText
                 font.family: root.fontSans
                 font.pixelSize: root.px(15)
+                leftPadding: root.px(12)
+                rightPadding: root.px(12)
                 selectByMouse: true
                 background: Rectangle {
                     radius: root.px(4)
@@ -159,6 +161,8 @@ Rectangle {
                 color: root.cText
                 font.family: root.fontSans
                 font.pixelSize: root.px(15)
+                leftPadding: root.px(12)
+                rightPadding: root.px(12)
                 selectByMouse: true
                 background: Rectangle {
                     radius: root.px(4)
@@ -202,40 +206,57 @@ Rectangle {
         }
     }
 
+    // Outlined pill button: clearly interactive (border + hover fill + glow).
+    component PowerButton: Button {
+        id: pb
+        hoverEnabled: true
+        leftPadding: root.px(14)
+        rightPadding: root.px(14)
+        topPadding: root.px(7)
+        bottomPadding: root.px(7)
+        font.family: root.fontMono
+        font.pixelSize: root.px(13)
+        background: Rectangle {
+            radius: root.px(4)
+            color: pb.hovered ? root.cRaised : "transparent"
+            border.color: pb.hovered ? root.cAccent : root.cOutline
+            border.width: 1
+        }
+        contentItem: Text {
+            text: pb.text
+            color: pb.hovered ? root.cAccentLt : root.cTextDim
+            font: pb.font
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+        }
+        // Pointing-hand cursor without intercepting the Button's own clicks.
+        MouseArea {
+            anchors.fill: parent
+            acceptedButtons: Qt.NoButton
+            cursorShape: Qt.PointingHandCursor
+        }
+    }
+
     // Power controls
     Row {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.margins: root.px(24)
-        spacing: root.px(18)
-
-        Text {
-            visible: sddm.canReboot
-            text: "Restart"
-            color: root.cTextDim
-            font.family: root.fontMono
-            font.pixelSize: root.px(13)
-            MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: sddm.reboot() }
-        }
-        Text {
-            visible: sddm.canPowerOff
-            text: "Shut down"
-            color: root.cTextDim
-            font.family: root.fontMono
-            font.pixelSize: root.px(13)
-            MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: sddm.powerOff() }
-        }
+        spacing: root.px(12)
+        PowerButton { text: "Restart"; visible: sddm.canReboot; onClicked: sddm.reboot() }
+        PowerButton { text: "Shut down"; visible: sddm.canPowerOff; onClicked: sddm.powerOff() }
     }
 
-    // Session indicator (niri-only)
+    // Session indicator (niri is the only session — informational, not a button)
     Text {
         anchors.left: parent.left
         anchors.bottom: parent.bottom
         anchors.margins: root.px(24)
-        text: "niri"
+        text: "session: niri"
         color: root.cTextDim
         font.family: root.fontMono
         font.pixelSize: root.px(13)
+        opacity: 0.7
     }
 
     Component.onCompleted: {

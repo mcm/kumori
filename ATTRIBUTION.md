@@ -35,3 +35,9 @@ Fetched at build time from Google Fonts, all under the SIL Open Font License:
 - [Geist](https://github.com/google/fonts/tree/main/ofl/geist) and
   [Geist Mono](https://github.com/google/fonts/tree/main/ofl/geistmono) (Vercel)
 - [Schibsted Grotesk](https://github.com/google/fonts/tree/main/ofl/schibstedgrotesk)
+
+## Wallpaper
+
+Photo by [Quino Al](https://unsplash.com/@quinoal) on
+[Unsplash](https://unsplash.com/photos/photo-of-beach-at-golden-hour-ZuZK8D55_cw)
+(Unsplash License).
