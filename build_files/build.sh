@@ -2,7 +2,7 @@
 
 set -ouex pipefail
 
-### Umizaru build script
+### Kumori build script
 #
 # Layers the niri scrollable-tiling compositor + the noctalia (Quickshell)
 # desktop shell on top of bluefin-dx, themed with the "Precision Overcast"
@@ -59,7 +59,7 @@ dnf5 install -y \
 #############################################
 # Schibsted Grotesk (sans) + Geist / Geist Mono are not packaged in Fedora.
 # Fetch the upstream variable TTFs (all OFL) from Google Fonts.
-FONTDIR="/usr/share/fonts/umizaru"
+FONTDIR="/usr/share/fonts/kumori"
 install -d "$FONTDIR"
 curl -fL --retry 3 -o "$FONTDIR/GeistMono.ttf" \
     "https://github.com/google/fonts/raw/main/ofl/geistmono/GeistMono%5Bwght%5D.ttf"
@@ -90,7 +90,7 @@ dconf update
 sed -i 's|^SHELL=.*|SHELL=/usr/bin/zsh|' /etc/default/useradd
 
 #############################################
-## 6. Rebrand: Bluefin -> Umizaru
+## 6. Rebrand: Bluefin -> Kumori
 #############################################
 # Universal Blue branding flows from /usr/lib/os-release (real file; /etc is a
 # symlink to it) and /usr/share/ublue-os/image-info.json. The GRUB boot entry,
@@ -100,8 +100,8 @@ sed -i 's|^SHELL=.*|SHELL=/usr/bin/zsh|' /etc/default/useradd
 # Conservative path: we change the display name (NAME/PRETTY_NAME/VARIANT_ID/...)
 # but deliberately leave ID/ID_LIKE alone, since Bluefin's tooling (ujust, etc.)
 # may key off ID=bluefin and changing it also requires a GRUB EFIDIR fix.
-IMAGE_NAME="umizaru"            # must match the OCI image name (ghcr.io/mcm/umizaru)
-IMAGE_PRETTY_NAME="Umizaru"        # the user-facing OS name
+IMAGE_NAME="kumori"            # must match the OCI image name (ghcr.io/mcm/kumori)
+IMAGE_PRETTY_NAME="Kumori"        # the user-facing OS name
 IMAGE_VENDOR="mcm"
 CODE_NAME="overcast"
 FEDORA_MAJOR_VERSION="$(grep -oP '(?<=^VERSION_ID=)\d+' /usr/lib/os-release)"
@@ -126,11 +126,11 @@ sed -i "s|^NAME=.*|NAME=\"${IMAGE_PRETTY_NAME}\"|"                  /usr/lib/os-
 sed -i "s|^PRETTY_NAME=.*|PRETTY_NAME=\"${IMAGE_PRETTY_NAME}\"|"    /usr/lib/os-release
 sed -i "s|^VARIANT_ID=.*|VARIANT_ID=${IMAGE_NAME}|"                 /usr/lib/os-release
 sed -i "s|^VERSION_CODENAME=.*|VERSION_CODENAME=\"${CODE_NAME}\"|"  /usr/lib/os-release
-sed -i "s|^HOME_URL=.*|HOME_URL=\"https://github.com/mcm/umizaru\"|"           /usr/lib/os-release
-sed -i "s|^DOCUMENTATION_URL=.*|DOCUMENTATION_URL=\"https://github.com/mcm/umizaru\"|" /usr/lib/os-release
-sed -i "s|^SUPPORT_URL=.*|SUPPORT_URL=\"https://github.com/mcm/umizaru/issues/\"|"      /usr/lib/os-release
-sed -i "s|^BUG_REPORT_URL=.*|BUG_REPORT_URL=\"https://github.com/mcm/umizaru/issues/\"|" /usr/lib/os-release
-sed -i "s|^DEFAULT_HOSTNAME=.*|DEFAULT_HOSTNAME=\"umizaru\"|"       /usr/lib/os-release
+sed -i "s|^HOME_URL=.*|HOME_URL=\"https://github.com/mcm/kumori\"|"           /usr/lib/os-release
+sed -i "s|^DOCUMENTATION_URL=.*|DOCUMENTATION_URL=\"https://github.com/mcm/kumori\"|" /usr/lib/os-release
+sed -i "s|^SUPPORT_URL=.*|SUPPORT_URL=\"https://github.com/mcm/kumori/issues/\"|"      /usr/lib/os-release
+sed -i "s|^BUG_REPORT_URL=.*|BUG_REPORT_URL=\"https://github.com/mcm/kumori/issues/\"|" /usr/lib/os-release
+sed -i "s|^DEFAULT_HOSTNAME=.*|DEFAULT_HOSTNAME=\"kumori\"|"       /usr/lib/os-release
 sed -i "s|^IMAGE_ID=.*|IMAGE_ID=\"${IMAGE_NAME}\"|"                 /usr/lib/os-release
 
 #############################################

@@ -1,4 +1,4 @@
-# Anaconda installer ISO config for umizaru.
+# Anaconda installer ISO config for kumori.
 #
 # Based on the template's iso-kde.toml: it keeps the full interactive installer
 # INCLUDING the Users module, so the installer prompts you to create a user
@@ -8,7 +8,7 @@
 [customizations.installer.kickstart]
 contents = """
 %post
-bootc switch --mutate-in-place --transport registry ghcr.io/mcm/umizaru:latest
+bootc switch --mutate-in-place --transport registry ghcr.io/mcm/kumori:latest
 %end
 """
 

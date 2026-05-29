@@ -1,4 +1,4 @@
-# Umizaru — default zsh config (seeded from /etc/skel).
+# Kumori — default zsh config (seeded from /etc/skel).
 # Edit freely; this exists mainly so a new account doesn't drop into the
 # zsh-newuser-install prompt and has reasonable defaults.
 

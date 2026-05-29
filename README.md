@@ -1,4 +1,4 @@
-# Umizaru
+# Kumori
 
 An atomic Fedora desktop built as a [bootc](https://github.com/bootc-dev/bootc)
 image: [Bluefin-dx](https://projectbluefin.io/) underneath, the
@@ -10,7 +10,7 @@ The image is rebuilt and published as a signed OCI image. Installed systems trac
 it and update atomically with `bootc`; rollbacks are a single command.
 
 ```
-ghcr.io/mcm/umizaru:latest
+ghcr.io/mcm/kumori:latest
 ```
 
 ## What's inside
@@ -37,7 +37,7 @@ inherits the full niri + noctalia + ghostty setup.
 From any Fedora atomic / Universal Blue system (Silverblue, Bluefin, Bazzite, …):
 
 ```
-sudo bootc switch ghcr.io/mcm/umizaru:latest
+sudo bootc switch ghcr.io/mcm/kumori:latest
 sudo systemctl reboot
 ```
 
@@ -55,7 +55,7 @@ Roll back with `sudo bootc rollback` and reboot.
 
 The `Build disk images` workflow produces an installer ISO (and a qcow2) via
 [bootc-image-builder](https://github.com/osbuild/bootc-image-builder). Run it
-from the Actions tab (`platform: amd64`), download the `umizaru.iso` artifact,
+from the Actions tab (`platform: amd64`), download the `kumori.iso` artifact,
 and write it to a USB stick. The Anaconda installer prompts for a user account;
 that account picks up the `/etc/skel` configuration.
 
@@ -65,7 +65,7 @@ Every image is signed with [cosign](https://github.com/sigstore/cosign). The
 public key is `cosign.pub` in this repository. Verify a pull with:
 
 ```
-cosign verify --key cosign.pub ghcr.io/mcm/umizaru
+cosign verify --key cosign.pub ghcr.io/mcm/kumori
 ```
 
 ## Build it yourself
@@ -94,7 +94,7 @@ enrolling your own keys. Review the script before turning it on.
 | Path | Purpose |
 | --- | --- |
 | `Containerfile` | Image definition; sets the base and runs the build script. |
-| `build_files/build.sh` | Packages, brand fonts, the Umizaru rebrand, theming, GDM session setup. |
+| `build_files/build.sh` | Packages, brand fonts, the Kumori rebrand, theming, GDM session setup. |
 | `build_files/system_files/` | Files copied into the image (the `/etc/skel` niri, noctalia, ghostty, and GTK configs). |
 | `build_files/optional/cachyos-kernel.sh` | Opt-in CachyOS kernel swap. |
 | `disk_config/` | bootc-image-builder configs: `disk.toml` (qcow2), `iso.toml` (installer ISO). |

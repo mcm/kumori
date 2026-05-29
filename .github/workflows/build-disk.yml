@@ -53,7 +53,7 @@ jobs:
           USER_GID=$(id -g)
           # Concatenate the types with a hyphen
           DISK_TYPE=$(echo "${{ matrix.disk-type }}" | tr ' ' '-')
-          # Human-friendly artifact name: umizaru.iso / umizaru.qcow2
+          # Human-friendly artifact name: kumori.iso / kumori.qcow2
           case "${{ matrix.disk-type }}" in
             anaconda-iso) ARTIFACT_EXT="iso" ;;
             *)            ARTIFACT_EXT="${{ matrix.disk-type }}" ;;

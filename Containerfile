@@ -7,7 +7,7 @@ COPY build_files /
 # bluefin-dx = Bluefin "Developer Experience" edition: the developer-targeted
 # Bluefin variant (container tooling, virtualization, devcontainers, etc.).
 # We layer the niri compositor + noctalia shell on top of it, rebranded to
-# "Umizaru" and themed "Precision Overcast". GNOME stays installed but its GDM
+# "Kumori" and themed "Precision Overcast". GNOME stays installed but its GDM
 # session entries are hidden, so niri is the only session offered at login.
 FROM ghcr.io/ublue-os/bluefin-dx:stable
 

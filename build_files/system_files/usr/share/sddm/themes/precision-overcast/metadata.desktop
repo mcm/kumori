@@ -1,10 +1,10 @@
 [SddmGreeterTheme]
 Name=Precision Overcast
-Description=Umizaru login screen, Precision Overcast
+Description=Kumori login screen, Precision Overcast
 Author=mcm
 License=MIT
 Type=sddm-theme
 Version=1.0
-Website=https://github.com/mcm/umizaru
+Website=https://github.com/mcm/kumori
 MainScript=Main.qml
 ConfigFile=theme.conf

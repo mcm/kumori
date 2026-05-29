@@ -1,4 +1,4 @@
-# Umizaru appearance defaults (system-wide, overridable per user).
+# Kumori appearance defaults (system-wide, overridable per user).
 # Under niri there's no GNOME settings daemon, so set the color-scheme that
 # libadwaita + the XDG appearance portal read, otherwise GTK4 apps render light
 # and the Precision Overcast gtk.css recolor looks inconsistent.
