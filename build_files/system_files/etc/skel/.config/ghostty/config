@@ -1,0 +1,38 @@
+# Umizaru — ghostty, themed "Precision Overcast" (dark register).
+# Colors map directly to the Precision Overcast tokens:
+#   bg slate-900, fg #e2e7ee, cursor glacier-300, ANSI from Aurora + Glacier.
+
+font-family = Geist Mono
+font-size = 11
+
+background = #131a26
+foreground = #e2e7ee
+cursor-color = #8eb5cc
+cursor-style = block
+selection-background = #2a3445
+selection-foreground = #e2e7ee
+
+# normal (0-7): black=slate-800 red=rust green=moss yellow=amber
+#               blue=glacier-500 magenta=violet cyan=glacier-300 white=text-secondary
+palette = 0=#1f2937
+palette = 1=#b47362
+palette = 2=#7a9477
+palette = 3=#c9a368
+palette = 4=#4a7d9b
+palette = 5=#8a7fa8
+palette = 6=#8eb5cc
+palette = 7=#a8b3c4
+
+# bright (8-15)
+palette = 8=#54637a
+palette = 9=#b47362
+palette = 10=#a5bfa1
+palette = 11=#d4a87f
+palette = 12=#8eb5cc
+palette = 13=#b8a4c9
+palette = 14=#b3cfe0
+palette = 15=#e2e7ee
+
+window-padding-x = 10
+window-padding-y = 10
+window-theme = ghostty

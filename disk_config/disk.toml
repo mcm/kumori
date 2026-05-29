@@ -10,3 +10,4 @@ minsize = "20 GiB"
 name = "niri"
 password = "niri"
 groups = ["wheel"]
+shell = "/usr/bin/zsh"
