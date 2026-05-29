@@ -108,3 +108,5 @@ The niri and noctalia configuration is derived from
 (GPL-3.0), adapted for Fedora and the Precision Overcast theme. Built from the
 Universal Blue [image-template](https://github.com/ublue-os/image-template). See
 [`ATTRIBUTION.md`](./ATTRIBUTION.md) for full detail.
+
+Wallpaper: Photo by [Quino Al](https://unsplash.com/@quinoal?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/photo-of-beach-at-golden-hour-ZuZK8D55_cw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
