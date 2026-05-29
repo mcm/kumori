@@ -1,0 +1,63 @@
+/* Umizaru — Precision Overcast recolor for libadwaita / GTK4.
+ *
+ * libadwaita doesn't support full themes, but it DOES support recoloring via
+ * its documented named colors (https://github.com/lassekongo83/adw-colors).
+ * These @define-color overrides map the Adwaita palette to Precision Overcast's
+ * dark register. The identical file is also used for GTK3 (adw-gtk3) since both
+ * use the same variable names. Force-dark is set via dconf (color-scheme).
+ */
+
+/* Accent — the single Glacier. Standalone accent (links, selected text) uses the
+ * lighter glacier-300 for legibility on dark; filled buttons use glacier-500. */
+@define-color accent_color           #8eb5cc;
+@define-color accent_bg_color        #4a7d9b;
+@define-color accent_fg_color        #ffffff;
+
+/* Window + content surfaces (Slate). */
+@define-color window_bg_color        #131a26;
+@define-color window_fg_color        #e2e7ee;
+@define-color view_bg_color          #131a26;
+@define-color view_fg_color          #e2e7ee;
+
+/* Raised surfaces: headerbar, cards, dialogs, popovers (slate-800). */
+@define-color headerbar_bg_color     #1f2937;
+@define-color headerbar_fg_color     #e2e7ee;
+@define-color headerbar_border_color #e2e7ee;
+@define-color headerbar_backdrop_color #131a26;
+@define-color headerbar_shade_color  rgba(0, 0, 0, 0.36);
+
+@define-color card_bg_color          #1f2937;
+@define-color card_fg_color          #e2e7ee;
+@define-color card_shade_color       rgba(0, 0, 0, 0.36);
+
+@define-color dialog_bg_color        #1f2937;
+@define-color dialog_fg_color        #e2e7ee;
+
+@define-color popover_bg_color       #1f2937;
+@define-color popover_fg_color       #e2e7ee;
+
+/* Sidebars (slate-900 base, raised content alongside). */
+@define-color sidebar_bg_color       #131a26;
+@define-color sidebar_fg_color       #e2e7ee;
+@define-color sidebar_backdrop_color #131a26;
+@define-color sidebar_border_color   rgba(0, 0, 0, 0.36);
+@define-color sidebar_shade_color    rgba(0, 0, 0, 0.36);
+@define-color secondary_sidebar_bg_color       #1f2937;
+@define-color secondary_sidebar_fg_color       #e2e7ee;
+@define-color secondary_sidebar_backdrop_color #131a26;
+@define-color secondary_sidebar_border_color   rgba(0, 0, 0, 0.36);
+@define-color secondary_sidebar_shade_color    rgba(0, 0, 0, 0.36);
+
+/* Semantic — Aurora, used only for signal. */
+@define-color success_color    #7a9477;
+@define-color success_bg_color #7a9477;
+@define-color success_fg_color #131a26;
+@define-color warning_color    #c9a368;
+@define-color warning_bg_color #c9a368;
+@define-color warning_fg_color #131a26;
+@define-color error_color      #b47362;
+@define-color error_bg_color   #b47362;
+@define-color error_fg_color   #ffffff;
+@define-color destructive_color    #b47362;
+@define-color destructive_bg_color #b47362;
+@define-color destructive_fg_color #ffffff;

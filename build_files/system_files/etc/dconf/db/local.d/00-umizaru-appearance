@@ -1,0 +1,10 @@
+# Umizaru appearance defaults (system-wide, overridable per user).
+# Under niri there's no GNOME settings daemon, so set the color-scheme that
+# libadwaita + the XDG appearance portal read, otherwise GTK4 apps render light
+# and the Precision Overcast gtk.css recolor looks inconsistent.
+[org/gnome/desktop/interface]
+color-scheme='prefer-dark'
+gtk-theme='adw-gtk3-dark'
+# 'slate' is the closest built-in accent enum to Glacier; the exact hex comes
+# from the gtk.css override. Apps reading only the enum get a sane fallback.
+accent-color='slate'

@@ -73,6 +73,15 @@ fc-cache -f "$FONTDIR"
 # system_files/ mirrors the final filesystem layout (etc/, usr/, ...).
 cp -r /ctx/system_files/* /
 
+# Compile the dconf system defaults we just dropped in (Precision Overcast
+# appearance: force dark so the libadwaita gtk.css recolor renders correctly).
+# Ensure the default profile references the "local" db without clobbering a
+# profile Bluefin may already ship.
+if [ ! -f /etc/dconf/profile/user ]; then
+    printf 'user-db:user\nsystem-db:local\n' > /etc/dconf/profile/user
+fi
+dconf update
+
 #############################################
 ## 5. Default login shell -> zsh (for newly created users)
 #############################################
