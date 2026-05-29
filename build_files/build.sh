@@ -36,6 +36,8 @@ dnf5 install -y --nogpgcheck \
 # volume keys through noctalia's IPC, and noctalia manages the wallpaper itself.
 # mate-polkit is our offline PolicyKit agent (noctalia's plugin is disabled);
 # Fedora no longer ships a standalone polkit-gnome.
+# cage is the wlroots kiosk compositor that backs the SDDM Wayland greeter
+# (replaces weston/sddm-wayland-generic; see sddm.conf.d/10-kumori.conf for why).
 dnf5 install -y \
     niri \
     noctalia-shell \
@@ -53,7 +55,7 @@ dnf5 install -y \
     adwaita-cursor-theme \
     ImageMagick \
     sddm \
-    sddm-wayland-generic
+    cage
 
 #############################################
 ## 3. Brand fonts (Precision Overcast)
@@ -151,8 +153,8 @@ sed -i "s|^IMAGE_ID=.*|IMAGE_ID=\"${IMAGE_NAME}\"|"                 /usr/lib/os-
 # GDM has no bakeable system-wide default session (it's AccountsService-only,
 # per-user), so on a niri-only image it falls back to its greeter's gnome-session.
 # SDDM is DE-agnostic, reads /usr/share/wayland-sessions, and with only niri.desktop
-# present simply defaults to niri. Its Wayland greeter runs via weston (provided
-# by sddm-wayland-generic), so no Xorg is needed.
+# present simply defaults to niri. Its Wayland greeter runs on cage (a wlroots kiosk
+# compositor; see sddm.conf.d/10-kumori.conf for why not weston), so no Xorg is needed.
 systemctl disable gdm.service || true
 systemctl enable sddm.service
 # Make SDDM the canonical display-manager (the alias symlink still points at gdm).
