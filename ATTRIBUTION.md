@@ -23,15 +23,10 @@ fit the Precision Overcast theme, including:
 A copy of the GPL-3.0 license text is available at
 <https://www.gnu.org/licenses/gpl-3.0.txt>.
 
-## Precision Overcast theme
-
-`noctalia/colorschemes/Precision Overcast/Precision Overcast.json` and the
-ghostty palette in `ghostty/config` are the maintainer's own design system
-("Precision Overcast"), not third-party work.
-
 ## Fonts
 
 Fetched at build time from Google Fonts, all under the SIL Open Font License:
+
 - [Geist](https://github.com/google/fonts/tree/main/ofl/geist) and
   [Geist Mono](https://github.com/google/fonts/tree/main/ofl/geistmono) (Vercel)
 - [Schibsted Grotesk](https://github.com/google/fonts/tree/main/ofl/schibstedgrotesk)
@@ -40,4 +35,4 @@ Fetched at build time from Google Fonts, all under the SIL Open Font License:
 
 Photo by [Quino Al](https://unsplash.com/@quinoal) on
 [Unsplash](https://unsplash.com/photos/photo-of-beach-at-golden-hour-ZuZK8D55_cw)
-(Unsplash License).
+(Unsplash License). Manually converted to match the custom color scheme.
