@@ -13,7 +13,8 @@ fit the Precision Overcast theme, including:
 - `niri/cfg/autostart.kdl` — added D-Bus session env import, `xwayland-satellite`,
   and a `mate-polkit` auth agent.
 - `niri/cfg/misc.kdl` — added `DISPLAY` for Xwayland; cursor theme changed from
-  `capitaine-cursors` (not packaged on Fedora) to `Adwaita`.
+  `capitaine-cursors` (not packaged on Fedora) to the bundled
+  `Simp1e-Precision-Overcast` theme.
 - `niri/cfg/keybinds.kdl` — terminal bound to `ghostty`.
 - `noctalia/plugins.json` — disabled the network-fetched `polkit-agent` plugin
   in favor of `mate-polkit`.
@@ -36,3 +37,11 @@ Fetched at build time from Google Fonts, all under the SIL Open Font License:
 Photo by [Quino Al](https://unsplash.com/@quinoal) on
 [Unsplash](https://unsplash.com/photos/photo-of-beach-at-golden-hour-ZuZK8D55_cw)
 (Unsplash License). Manually converted to match the custom color scheme.
+
+## Cursor theme
+
+`build_files/system_files/usr/share/icons/Simp1e-Precision-Overcast/` is generated
+from the [Simp1e](https://gitlab.com/cursors/simp1e) cursor template (itself based
+on cz-Viator), licensed under the **GNU General Public License v3.0**. Only the
+color scheme was changed, to the Precision Overcast palette. The scheme source is
+kept locally (not in this repo); the built theme is shipped as-is.

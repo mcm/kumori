@@ -19,9 +19,10 @@
     }
 
     cursor {
-        // CachyOS uses "capitaine-cursors"; it isn't packaged on Fedora, so we
-        // fall back to Adwaita (always present). Swap back if you install it.
-        xcursor-theme "Adwaita"
+        // Kumori's own cursor theme: generated from the Simp1e template with the
+        // Precision Overcast palette, shipped in /usr/share/icons. Inherits
+        // Adwaita for any cursor names it doesn't define.
+        xcursor-theme "Simp1e-Precision-Overcast"
         xcursor-size 24
     }
 

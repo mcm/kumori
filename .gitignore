@@ -5,3 +5,6 @@ _build-*/**
 __pycache__
 precision-overcast.html
 recolor.py
+# Cursor-theme color-scheme source (local; only the built theme is shipped).
+# Root-anchored so it does NOT match the shipped theme's own cursors/ subdir.
+/cursors/

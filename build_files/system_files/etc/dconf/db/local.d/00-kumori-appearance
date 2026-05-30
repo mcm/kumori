@@ -5,6 +5,7 @@
 [org/gnome/desktop/interface]
 color-scheme='prefer-dark'
 gtk-theme='adw-gtk3-dark'
+cursor-theme='Simp1e-Precision-Overcast'
 # 'slate' is the closest built-in accent enum to Glacier; the exact hex comes
 # from the gtk.css override. Apps reading only the enum get a sane fallback.
 accent-color='slate'
