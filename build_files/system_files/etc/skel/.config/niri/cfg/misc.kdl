@@ -23,6 +23,9 @@
         // Precision Overcast palette, shipped in /usr/share/icons. Inherits
         // Adwaita for any cursor names it doesn't define.
         xcursor-theme "Simp1e-Precision-Overcast"
+        // 24 logical, but niri auto-scales the HiDPI output x2 -> 48 physical px,
+        // matching the SDDM greeter's CursorSize=48 (cage runs at scale 1). Don't
+        // "unify" this to 48 -- that renders 96px. See etc/sddm.conf.d/10-kumori.conf.
         xcursor-size 24
     }
 
