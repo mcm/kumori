@@ -2,6 +2,7 @@ cosign.key
 _build_*
 output
 _build-*/**
+.DS_Store
 __pycache__
 precision-overcast.html
 recolor.py
